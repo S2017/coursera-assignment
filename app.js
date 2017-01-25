@@ -1,19 +1,29 @@
-(function(){
-  'use-strict';
+  var app=angular.module('itemApp',[]);
+  app.controller('itemController',function($scope){
 
-
-
-  angular.module('itemApp',[])
-  .controller('itemController',itemController);
-  function itemController($scope,$inject){
-    $scope.names="Sai";
-    $scope.clickMe = function(){
-    if($scope.names != undefined || $scope.names != ""){
-      alert("You are right");
+      $scope.clickMe = function(name){
+        if(name!="" && name!=undefined){
+        var i=name.split(',');
+        if(i.length<=3)
+        {
+          $scope.showError=false;
+          $scope.showsuccess=true;
+          $scope.msg="ENJOY!!";
+          console.log('inside success');
+        }
+      else {
+        $scope.showError=true;
+        $scope.showsuccess=false;
+        $scope.msg="TOO MUCH!!";
+        console.log('inside failure');
+      }
     }
-    else {
-      alert("You are wrong");
-    }
-  };
-}
-})
+
+    else{
+      $scope.showError=true;
+      $scope.showsuccess=false;
+      $scope.msg="Please Enter data First";
+  }
+    };
+
+  });

@@ -6,11 +6,13 @@
     <script type="text/javascript" src="app.js"></script>
     <title>MODULE 1 SOLUTION</title>
   </head>
-  <body>
-    <div ng-controller="itemController">
+  <body ng-controller="itemController">
+    <div>
     <label> Enter the list of lunch items as comma separated values in the box shown beside:::</label>
-    <input type="text" ng-model="names">{{names}}
-    <button class="primary" ng-click="clickMe()"></button>
+    <input type="text" ng-model="names">
+    <button ng-click="clickMe(names)">Check if too much</button>
     </div>
+    <div ng-show="showError">{{msg}}</div>
+    <div ng-show="showsuccess">{{msg}}</div>
   </body>
 </html>
